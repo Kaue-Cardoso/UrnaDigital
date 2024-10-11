@@ -16,7 +16,6 @@ public class EleitorService {
 	    private EleitorRepository eleitorRepository;
 
 	    public Eleitor save(Eleitor eleitor) {
-	        // Definindo status como PENDENTE se faltar CPF ou e-mail
 	        if (eleitor.getCpf() == null || eleitor.getEmail() == null) {
 	            eleitor.setStatus("PENDENTE");
 	        } else {

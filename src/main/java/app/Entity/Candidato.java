@@ -30,7 +30,7 @@ public class Candidato {
     @Pattern(regexp = "\\d{11}", message = "O CPF deve ter exatamente 11 dígitos")
     private String cpf; // CPF obrigatório
 
-    @Column(nullable = false, unique = true)
+    //@Column(nullable = false, unique = true)
     private Integer numero; // Único
 
     @NotNull

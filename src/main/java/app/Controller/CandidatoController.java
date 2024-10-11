@@ -1,6 +1,7 @@
 package app.Controller;
 
 import app.Entity.Candidato;
+import app.Entity.Eleitor;
 import app.Service.CandidatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/candidatos")
+@RequestMapping("app/candidatos")
 public class CandidatoController {
 
     @Autowired
