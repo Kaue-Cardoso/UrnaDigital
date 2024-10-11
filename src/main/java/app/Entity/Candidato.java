@@ -1,11 +1,12 @@
 package app.Entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -34,7 +35,8 @@ public class Candidato {
     private Integer numero; // Único
 
     @NotNull
-    @Pattern(regexp = "1|2", message = "O valor deve ser 1 ou 2")
+    @Min(1)
+    @Max(2)
     private Integer funcao;
 
     // Status agora é String
