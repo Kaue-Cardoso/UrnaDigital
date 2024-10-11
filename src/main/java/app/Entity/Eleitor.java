@@ -39,6 +39,7 @@ public class Eleitor {
     private String telefoneFixo;
 
     @Email
+    @NotBlank
     private String email;
 
     private String status;

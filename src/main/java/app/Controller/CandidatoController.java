@@ -21,7 +21,7 @@ public class CandidatoController {
     public ResponseEntity<Candidato> create(@RequestBody Candidato candidato) {
         try {
             Candidato novoCandidato = candidatoService.save(candidato);
-            return ResponseEntity.status(HttpStatus.CREATED).body(novoCandidato);
+            return ResponseEntity.status(HttpStatus.OK).body(novoCandidato);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

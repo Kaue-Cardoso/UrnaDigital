@@ -40,8 +40,8 @@ public class EleitorService {
 	        }
 	    }
 
-	    public List<Eleitor> findAllAtivos() {
-	        return eleitorRepository.findByStatus("ATIVO");
+	    public List<Eleitor> findAllAptos() {
+	        return eleitorRepository.findByStatus("APTO");
 	    }
 	    public List<Eleitor> findAll() {
 	        return eleitorRepository.findAll(); // Retorna todos os eleitores

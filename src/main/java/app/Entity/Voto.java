@@ -27,12 +27,12 @@ public class Voto {
     @NotNull
     private LocalDateTime dataHora;
 
-    @NotEmpty
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "prefeito_id")
     private Candidato candidatoPrefeito;
 
-    @NotEmpty
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "vereador_id")
     private Candidato candidatoVereador;

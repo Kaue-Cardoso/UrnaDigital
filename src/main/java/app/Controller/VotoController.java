@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/votacao")
+@RequestMapping("app/votos")
 public class VotoController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class VotoController {
     public ResponseEntity<String> votar(@RequestBody Voto voto) {
         try {
             String hashComprovante = votoService.votar(voto);
-            return ResponseEntity.status(HttpStatus.CREATED).body(hashComprovante);
+            return ResponseEntity.status(HttpStatus.OK).body("li li li liiii (Som de Urna) Voto Confirmado " + hashComprovante);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao votar: " + e.getMessage());
         }

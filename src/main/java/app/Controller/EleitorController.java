@@ -20,7 +20,7 @@ public class EleitorController {
     public ResponseEntity<Eleitor> create(@RequestBody Eleitor eleitor) {
         try {
             Eleitor novoEleitor = eleitorService.save(eleitor);
-            return ResponseEntity.status(HttpStatus.CREATED).body(novoEleitor);
+            return ResponseEntity.status(HttpStatus.OK).body(novoEleitor);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
@@ -49,8 +49,8 @@ public class EleitorController {
     @GetMapping("/findAllAtivos")
     public ResponseEntity<List<Eleitor>> findAllAtivos() {
         try {
-            List<Eleitor> eleitoresAtivos = eleitorService.findAllAtivos();
-            return ResponseEntity.ok(eleitoresAtivos);
+            List<Eleitor> eleitoresAptos= eleitorService.findAllAptos();
+            return ResponseEntity.ok(eleitoresAptos);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
