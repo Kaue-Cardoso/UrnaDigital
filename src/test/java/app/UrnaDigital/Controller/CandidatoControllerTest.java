@@ -58,7 +58,7 @@ class CandidatoControllerTest {
 
         when(candidatoService.save(any(Candidato.class))).thenReturn(candidatoAtivo);
         when(candidatoService.findById(1L)).thenReturn(candidatoAtivo);
-        when(candidatoService.findAllAtivos()).thenReturn(Arrays.asList(candidatoAtivo));
+        when(candidatoService.findAtivos()).thenReturn(Arrays.asList(candidatoAtivo));
         doNothing().when(candidatoService).delete(1L);
     }
 
@@ -99,8 +99,8 @@ class CandidatoControllerTest {
     }
 
     @Test
-    void FindAllAtivos_Success() {
-        ResponseEntity<List<Candidato>> response = candidatoController.findAll();
+    void FindAtivos_Success() {
+        ResponseEntity<List<Candidato>> response = candidatoController.findAtivos();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(1, response.getBody().size());
@@ -108,8 +108,8 @@ class CandidatoControllerTest {
     }
 
     @Test
-    void FindAllAtivos_Failure() {
-        when(candidatoService.findAllAtivos()).thenThrow(new RuntimeException("Erro ao buscar candidatos"));
+    void FindAtivos_Failure() {
+        when(candidatoService.findAtivos()).thenThrow(new RuntimeException("Erro ao buscar candidatos"));
 
         ResponseEntity<List<Candidato>> response = candidatoController.findAll();
 

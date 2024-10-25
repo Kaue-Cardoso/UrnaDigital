@@ -27,8 +27,11 @@ public class CandidatoService {
 	        candidatoRepository.save(candidato);
 	    }
 
-	    public List<Candidato> findAllAtivos() {
+	    public List<Candidato> findAtivos() {
 	        return candidatoRepository.findByStatus("ATIVO");
+	    }
+	    public List<Candidato> findAll() {
+	        return candidatoRepository.findAll();
 	    }
 
 	    public boolean isCandidatoPrefeito(Long id) {

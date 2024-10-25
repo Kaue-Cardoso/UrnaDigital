@@ -51,11 +51,11 @@ public class VotoService {
     }
 
     public Apuracao realizarApuracao() {
-        List<Candidato> candidatosPrefeito = candidatoService.findAllAtivos().stream()
+        List<Candidato> candidatosPrefeito = candidatoService.findAtivos().stream()
                 .filter(c -> c.getFuncao() == 1) // Prefeito
                 .collect(Collectors.toList());
 
-        List<Candidato> candidatosVereador = candidatoService.findAllAtivos().stream()
+        List<Candidato> candidatosVereador = candidatoService.findAtivos().stream()
                 .filter(c -> c.getFuncao() == 2) // Vereador
                 .collect(Collectors.toList());
 

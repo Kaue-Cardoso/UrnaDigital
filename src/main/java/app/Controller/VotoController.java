@@ -2,6 +2,10 @@ package app.Controller;
 
 import app.Entity.Voto;
 import app.Service.VotoService;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,18 +13,22 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("app/votos")
+@CrossOrigin("*")
 public class VotoController {
 
     @Autowired
     private VotoService votoService;
 
     @PostMapping("/votar")
-    public ResponseEntity<String> votar(@RequestBody Voto voto) {
+    public ResponseEntity<Map<String, String>> votar(@RequestBody Voto voto) {
+        Map<String, String> response = new HashMap<>();
         try {
             String hashComprovante = votoService.votar(voto);
-            return ResponseEntity.status(HttpStatus.OK).body("li li li liiii (Som de Urna) Voto Confirmado " + hashComprovante);
+            response.put("message", "li li li liiii (Som de Urna) Voto Confirmado " + hashComprovante);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao votar: " + e.getMessage());
+            response.put("error", "Erro ao votar: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
     }
 

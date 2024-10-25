@@ -27,6 +27,27 @@ public class EleitorService {
 	        Optional<Eleitor> eleitorOptional = eleitorRepository.findById(id);
 	        return eleitorOptional.orElseThrow(() -> new RuntimeException("Eleitor não encontrado.")); // Lança exceção se não encontrado
 	    }
+	    
+	    public Eleitor update(Long id, Eleitor eleitorAtualizado) {
+	        Eleitor eleitorExistente = eleitorRepository.findById(id)
+	                .orElseThrow(() -> new RuntimeException("Eleitor não encontrado."));
+
+	        eleitorExistente.setNomeCompleto(eleitorAtualizado.getNomeCompleto());
+	        eleitorExistente.setCpf(eleitorAtualizado.getCpf());
+	        eleitorExistente.setEmail(eleitorAtualizado.getEmail());
+	        eleitorExistente.setProfissao(eleitorAtualizado.getProfissao());
+	        eleitorExistente.setCelular(eleitorAtualizado.getCelular());
+	        eleitorExistente.setTelefoneFixo(eleitorAtualizado.getTelefoneFixo());
+	        eleitorExistente.setStatus(eleitorAtualizado.getStatus());
+
+	        if (eleitorExistente.getCpf() == null || eleitorExistente.getEmail() == null) {
+	            eleitorExistente.setStatus("PENDENTE");
+	        } else {
+	            eleitorExistente.setStatus("APTO");
+	        }
+
+	        return eleitorRepository.save(eleitorExistente);
+	    }
 
 	    public void delete(Long id) {
 	        Eleitor eleitor = eleitorRepository.findById(id).orElseThrow(() -> new RuntimeException("Eleitor não encontrado."));

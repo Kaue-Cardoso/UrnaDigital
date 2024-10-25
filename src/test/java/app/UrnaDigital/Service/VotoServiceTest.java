@@ -116,7 +116,7 @@ public class VotoServiceTest {
         Candidato candidatoAtivoPrefeito = new Candidato(1L, "Carlinhos Maia","12345678911", 50, 1, "ATIVO", 0);
         Candidato candidatoAtivoVereador = new Candidato(2L, "Bambino Pereira","12345678911", 12, 2, "ATIVO", 0);
 
-        when(candidatoService.findAllAtivos()).thenReturn(Arrays.asList(candidatoAtivoPrefeito, candidatoAtivoVereador));
+        when(candidatoService.findAtivos()).thenReturn(Arrays.asList(candidatoAtivoPrefeito, candidatoAtivoVereador));
         when(votoRepository.countByCandidatoPrefeito_Id(candidatoAtivoPrefeito.getId())).thenReturn(10);
         when(votoRepository.countByCandidatoVereador_Id(candidatoAtivoVereador.getId())).thenReturn(5);
 

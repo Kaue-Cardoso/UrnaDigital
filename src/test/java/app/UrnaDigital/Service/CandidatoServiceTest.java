@@ -92,10 +92,10 @@ public class CandidatoServiceTest {
     }
 
     @Test
-    void FindAllAtivos() {
+    void FindAtivos() {
         when(candidatoRepository.findByStatus("ATIVO")).thenReturn(Arrays.asList(candidatoAtivo));
 
-        var ativos = candidatoService.findAllAtivos();
+        var ativos = candidatoService.findAtivos();
 
         assertEquals(1, ativos.size());
         assertEquals(candidatoAtivo, ativos.get(0));

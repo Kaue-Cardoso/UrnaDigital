@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("app/candidatos")
+@CrossOrigin("*")
 public class CandidatoController {
 
     @Autowired
@@ -40,7 +41,17 @@ public class CandidatoController {
     @GetMapping("/findAll")
     public ResponseEntity<List<Candidato>> findAll() {
         try {
-            List<Candidato> candidatos = candidatoService.findAllAtivos();
+            List<Candidato> candidatos = candidatoService.findAll();
+            return ResponseEntity.ok(candidatos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+    
+    @GetMapping("/findAtivos")
+    public ResponseEntity<List<Candidato>> findAtivos() {
+        try {
+            List<Candidato> candidatos = candidatoService.findAtivos();
             return ResponseEntity.ok(candidatos);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
