@@ -1,4 +1,4 @@
-Sistema em desenvolvimento para pratica e desenvolvimento de atividades de FrontEnd com FrameWorks.
+Sistema desenvolvido para pratica e desenvolvimento de atividades de FrontEnd com FrameWorks para o 4º período de Engenharia de Software, Uniamerica.
 Framework FrontEnd: *Angular v18.2.8*
 Framework BackEnd: *SpringBoot v3.3.3*
 Bando de Dados: *Mysql v8.0.39*
